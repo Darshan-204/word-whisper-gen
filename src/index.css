@@ -8,7 +8,7 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 0%;
+    --background: 200 20% 8%;
     --foreground: 0 0% 98%;
 
     --card: 200 15% 12%;
@@ -45,9 +45,6 @@ All colors MUST be HSL.
 
     /* Grid pattern */
     --grid-color: 200 20% 15%;
-    
-    /* Border accent color - cyan/teal */
-    --border-accent: 180 100% 50%;
   }
 }
 
@@ -74,9 +71,9 @@ All colors MUST be HSL.
 }
 
 @layer utilities {
-  /* Pure black background */
+  /* Gradient background with improved performance */
   .gradient-bg {
-    background: hsl(0 0% 0%);
+    background: linear-gradient(135deg, hsl(var(--gradient-start)), hsl(var(--gradient-mid)) 50%, hsl(var(--gradient-end)));
     /* Hardware acceleration for smoother animations */
     will-change: transform;
     transform: translateZ(0);
@@ -105,12 +102,6 @@ All colors MUST be HSL.
 
   .badge-glow:hover {
     box-shadow: 0 0 30px hsl(var(--primary) / 0.6);
-  }
-
-  /* Bordered content box with cyan border */
-  .content-box-border {
-    border: 2px solid hsl(var(--border-accent));
-    box-shadow: 0 0 20px hsl(var(--border-accent) / 0.3);
   }
 
   /* Responsive font sizing */
