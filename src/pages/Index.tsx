@@ -74,33 +74,41 @@ const Index = () => {
         animate="visible"
         className="relative z-10 flex flex-col items-start justify-center min-h-screen px-6 sm:px-8 md:px-12 lg:px-24 max-w-7xl mx-auto w-full py-12"
       >
-        {/* Badge with entrance animation */}
-        <motion.div variants={itemVariants}>
-          <AnimatedBadge className="mb-8 sm:mb-10 lg:mb-12">
-            Assignment
-          </AnimatedBadge>
-        </motion.div>
-
-        {/* Main heading with character animation */}
-        <motion.h1 
-          variants={itemVariants}
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-foreground mb-12 sm:mb-14 lg:mb-16 leading-tight tracking-tight"
+        {/* Bordered box container for heading */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="content-box-border p-8 sm:p-10 md:p-12 lg:p-16 mb-12 sm:mb-14 lg:mb-16 rounded-lg"
         >
-          <motion.span
-            className="block"
-            whileHover={{ x: 5 }}
-            transition={{ type: "spring", stiffness: 300 }}
+          {/* Badge with entrance animation */}
+          <motion.div variants={itemVariants}>
+            <AnimatedBadge className="mb-8 sm:mb-10 lg:mb-12">
+              Assignment
+            </AnimatedBadge>
+          </motion.div>
+
+          {/* Main heading with character animation */}
+          <motion.h1 
+            variants={itemVariants}
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-foreground leading-tight tracking-tight"
           >
-            UI DEVELOPER
-          </motion.span>
-          <motion.span
-            className="block"
-            whileHover={{ x: 5 }}
-            transition={{ type: "spring", stiffness: 300 }}
-          >
-            ASSIGNMENT
-          </motion.span>
-        </motion.h1>
+            <motion.span
+              className="block"
+              whileHover={{ x: 5 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              UI DEVELOPER
+            </motion.span>
+            <motion.span
+              className="block"
+              whileHover={{ x: 5 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              ASSIGNMENT
+            </motion.span>
+          </motion.h1>
+        </motion.div>
 
         {/* Company information with stagger */}
         <motion.div 
