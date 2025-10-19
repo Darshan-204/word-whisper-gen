@@ -56,26 +56,70 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
+    /* Smooth scrolling for better UX */
+    scroll-behavior: smooth;
+    /* Prevent horizontal overflow */
+    overflow-x: hidden;
+  }
+
+  /* Improve text rendering across browsers */
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
 }
 
 @layer utilities {
+  /* Gradient background with improved performance */
   .gradient-bg {
     background: linear-gradient(135deg, hsl(var(--gradient-start)), hsl(var(--gradient-mid)) 50%, hsl(var(--gradient-end)));
+    /* Hardware acceleration for smoother animations */
+    will-change: transform;
+    transform: translateZ(0);
   }
 
+  /* Grid pattern with optimized rendering */
   .grid-pattern {
     background-image: 
       linear-gradient(hsl(var(--grid-color)) 1px, transparent 1px),
       linear-gradient(90deg, hsl(var(--grid-color)) 1px, transparent 1px);
     background-size: 50px 50px;
+    /* Optimize for animations */
+    backface-visibility: hidden;
   }
 
+  /* Text glow effect */
   .text-glow {
     text-shadow: 0 0 40px hsl(var(--primary) / 0.3);
   }
 
+  /* Badge glow with animation */
   .badge-glow {
     box-shadow: 0 0 20px hsl(var(--primary) / 0.4);
+    transition: box-shadow 0.3s ease-in-out;
+  }
+
+  .badge-glow:hover {
+    box-shadow: 0 0 30px hsl(var(--primary) / 0.6);
+  }
+
+  /* Responsive font sizing */
+  @media (max-width: 640px) {
+    .grid-pattern {
+      background-size: 30px 30px;
+    }
+  }
+
+  /* Reduce motion for accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }
