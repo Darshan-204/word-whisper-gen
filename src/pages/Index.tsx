@@ -56,7 +56,7 @@ const Index = () => {
   return (
     <div 
       ref={containerRef}
-      className="min-h-screen gradient-bg relative overflow-hidden"
+      className="min-h-screen bg-black relative overflow-hidden"
     >
       {/* Animated background elements */}
       <GridPattern />
@@ -66,25 +66,70 @@ const Index = () => {
         style={{ y: backgroundY }}
         className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-purple-900/10 pointer-events-none"
       />
+
+      {/* Top-center teal half-circle (attached to top) */}
+      <motion.div
+        style={{ y: backgroundY }}
+        className="absolute left-1/2 -translate-x-1/2 top-0 w-[720px] h-[360px] pointer-events-none overflow-hidden"
+      >
+        {/* big blurred circle clipped by container to create a half-circle */}
+        <div
+          style={{
+            position: 'absolute',
+            left: '50%',
+            top: '-160px',
+            width: '720px',
+            height: '720px',
+            transform: 'translateX(-50%)',
+            borderRadius: '50%',
+            background: 'radial-gradient(circle at 50% 12%, rgba(6,182,212,0.36) 0%, rgba(6,182,212,0.22) 28%, transparent 60%)',
+            filter: 'blur(72px)'
+          }}
+        />
+      </motion.div>
+
+      {/* Bottom-right purple half-circle (attached to bottom-right with small right gap) */}
+      <motion.div
+        style={{ y: backgroundY }}
+        className="absolute -right-6 bottom-0 w-[520px] h-[260px] pointer-events-none overflow-hidden"
+      >
+        {/* circle positioned so only its top half shows, creating a bottom-attached semicircle */}
+        <div
+          style={{
+            position: 'absolute',
+            left: '0',
+            top: '0',
+            width: '520px',
+            height: '520px',
+            transform: 'translateY(260px)',
+            borderRadius: '50%',
+            background: 'radial-gradient(circle at 70% 70%, rgba(38, 17, 87, 0.60) 0%, rgba(139,92,246,0.48) 30%, transparent 60%)',
+            filter: 'blur(48px)'
+          }}
+        />
+      </motion.div>
       
       {/* Main content container */}
       <motion.div 
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="relative z-10 flex flex-col items-start justify-center min-h-screen px-6 sm:px-8 md:px-12 lg:px-24 max-w-7xl mx-auto w-full py-12"
+  className="relative z-10 flex flex-col items-start justify-center min-h-screen pl-12 sm:pl-16 md:pl-24 lg:pl-32 max-w-7xl mx-auto w-full py-12"
       >
-        {/* Badge with entrance animation */}
-        <motion.div variants={itemVariants}>
-          <AnimatedBadge className="mb-8 sm:mb-10 lg:mb-12">
-            Assignment
-          </AnimatedBadge>
-        </motion.div>
+    {/* Large grid overlay behind the heading */}
+    <div className="grid-overlay--large" />
+
+          {/* Badge with entrance animation */}
+          <motion.div variants={itemVariants}>
+            <AnimatedBadge className="mb-8 sm:mb-10 lg:mb-12">
+              Assignment
+            </AnimatedBadge>
+          </motion.div>
 
         {/* Main heading with character animation */}
         <motion.h1 
           variants={itemVariants}
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-foreground mb-12 sm:mb-14 lg:mb-16 leading-tight tracking-tight"
+  className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[96px] font-bold text-foreground mb-10 sm:mb-12 lg:mb-14 leading-tight tracking-tight"
         >
           <motion.span
             className="block"

@@ -87,6 +87,47 @@ All colors MUST be HSL.
     background-size: 50px 50px;
     /* Optimize for animations */
     backface-visibility: hidden;
+    /* Make the grid subtle and darker */
+    opacity: 0.06;
+    mix-blend-mode: overlay;
+  }
+
+  /* Subtle grid overlay used near the heading */
+  .grid-overlay {
+    position: absolute;
+    width: 420px;
+    height: 360px;
+    left: 48px;
+    top: 80px;
+    background-image: 
+      linear-gradient(hsl(var(--grid-color)) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--grid-color)) 1px, transparent 1px);
+    background-size: 36px 36px;
+    opacity: 0.12;
+    pointer-events: none;
+    transform: translateZ(0);
+    border-radius: 6px;
+  }
+
+  /* Large grid overlay for hero area */
+  .grid-overlay--large {
+    position: absolute;
+    /* Make a circular grid patch behind the heading */
+  width: 714px;
+  height: 714px;
+  left: 24px; /* nudged left to match reference */
+  top: 40px;  /* nudged up to match reference */
+    background-image: 
+      linear-gradient(hsl(var(--grid-color)) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--grid-color)) 1px, transparent 1px);
+    background-size: 36px 36px;
+    opacity: 0.14;
+    pointer-events: none;
+    transform: translateZ(0);
+    border-radius: 50%;
+    /* So the grid is only visible within a circle, the rest stays black */
+    overflow: hidden;
+    box-shadow: inset 0 0 120px rgba(0,0,0,0.45);
   }
 
   /* Text glow effect */
@@ -102,6 +143,18 @@ All colors MUST be HSL.
 
   .badge-glow:hover {
     box-shadow: 0 0 30px hsl(var(--primary) / 0.6);
+  }
+
+  /* Rounded pill badge appearance */
+  .badge-pill {
+    background: hsl(35 100% 55%);
+    color: hsl(0 0% 6%);
+    padding: 0.5rem 1.1rem;
+    border-radius: 0.6rem;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.45), 0 2px 6px rgba(0,0,0,0.25);
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
   }
 
   /* Responsive font sizing */

@@ -29,9 +29,13 @@ export const AnimatedBadge = ({ children, className }: AnimatedBadgeProps) => {
         damping: 20
       }}
       className={cn(
-        "inline-block px-6 py-3 bg-primary text-primary-foreground rounded-xl font-medium tracking-wide uppercase text-sm badge-glow cursor-default select-none",
+        "inline-block px-6 py-3 bg-primary text-primary-foreground rounded-xl font-medium tracking-wide uppercase text-sm badge-glow cursor-default select-none badge-pill",
         className
       )}
+      style={{
+        transform: 'translateY(2px) translateX(2px)',
+        boxShadow: '6px 6px 0 rgba(0,0,0,0.22), 0 8px 18px rgba(0,0,0,0.32)'
+      }}
     >
       {children}
     </motion.div>
